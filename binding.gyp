@@ -9,11 +9,21 @@
 		{
 			"target_name": "rpi-rgb-led-matrix",
 			"type": "static_library",
-			"sources": ["external/matrix/lib/bdf-font.cc",
-				"external/matrix/lib/framebuffer.cc", "external/matrix/lib/gpio.cc",
-				"external/matrix/lib/graphics.cc", "external/matrix/lib/led-matrix.cc",
-				"external/matrix/lib/thread.cc"],
+			"sources":
+				["external/matrix/lib/bdf-font.cc",
+				"external/matrix/lib/content-streamer.cc",
+				"external/matrix/lib/framebuffer.cc",
+				"external/matrix/lib/gpio.cc",
+				"external/matrix/lib/graphics.cc",
+				"external/matrix/lib/hardware-mapping.c",
+				"external/matrix/lib/led-matrix.cc",
+				"external/matrix/lib/led-matrix-c.cc",
+				"external/matrix/lib/multiplex-transformers.cc",
+				"external/matrix/lib/options-initialize.cc",
+				"external/matrix/lib/thread.cc",
+				"external/matrix/lib/transformer.cc"],
 			"libraries": ["-lrt", "-lm", "-lpthread"],
+			"defines": ["ADAFRUIT_RGBMATRIX_HAT"],
 			"include_dirs": [ "external/matrix/include" ],
 	        "direct_dependent_settings": {
 	            "include_dirs": [ "external/matrix/include" ]

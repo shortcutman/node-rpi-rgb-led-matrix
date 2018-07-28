@@ -23,7 +23,7 @@
 				"external/matrix/lib/thread.cc",
 				"external/matrix/lib/transformer.cc"],
 			"libraries": ["-lrt", "-lm", "-lpthread"],
-			"defines": ["ADAFRUIT_RGBMATRIX_HAT"],
+			"defines": ['DEFAULT_HARDWARE="adafruit-hat"'],
 			"include_dirs": [ "external/matrix/include" ],
 	        "direct_dependent_settings": {
 	            "include_dirs": [ "external/matrix/include" ]

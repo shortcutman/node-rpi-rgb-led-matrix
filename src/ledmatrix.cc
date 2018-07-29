@@ -24,14 +24,11 @@ Nan::Persistent<v8::Function> LedMatrix::constructor;
 
 LedMatrix::LedMatrix(int rows, int chained_displays, int parallel_displays) {
 	assert(io.Init());
-	matrix = new RGBMatrix(&io, rows, chained_displays, parallel_displays);	
+	matrix = std::make_unique<RGBMatrix(&io, rows, chained_displays, parallel_displays);
 	matrix->set_luminance_correct(true);
-	image = NULL;
 }
 
 LedMatrix::~LedMatrix() {
-	delete image;
-	delete matrix;
 }
 
 void LedMatrix::Init(v8::Local<v8::Object> exports) {
@@ -86,11 +83,7 @@ void LedMatrix::Fill(uint8_t r, uint8_t g, uint8_t b) {
 }
 
 void LedMatrix::SetImage(Image* img) {
-	if(image && image->IsValid()) {
-		delete image;
-		image = NULL;
-	}
-	image = new Image();
+	image = std:make_unique<Image>();
 	image->Reset();
 	image->SetWidth(img->GetWidth());
 	image->SetHeight(img->GetHeight());

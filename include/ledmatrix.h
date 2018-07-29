@@ -9,6 +9,8 @@
 #ifndef NODE_LED_MATRIX_H
 #define NODE_LED_MATRIX_H
 
+#include <memory>
+
 #include <node.h>
 #include <node_object_wrap.h>
 #include <nan.h>
@@ -64,9 +66,8 @@ class LedMatrix : public node::ObjectWrap {
 	private:
 
 		GPIO io;
-		RGBMatrix* matrix;
-
-		Image* image;
+		std::unique_ptr<RGBMatrix> matrix;
+		std::unqiue_ptr<Image> image;
 
 		struct uvscroll {
 			LedMatrix* matrix;
